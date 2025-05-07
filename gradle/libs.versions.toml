@@ -41,7 +41,7 @@ playServicesMaps = "18.2.0"
 annotation = "1.7.1"
 
 # Project versions
-projectApplicationId = "com.example.runique"
+projectApplicationId = "com.chan.runique"
 projectVersionName = "1.0"
 projectMinSdkVersion = "26"
 projectTargetSdkVersion = "35"
@@ -137,6 +137,7 @@ room = { id = "androidx.room", version.ref = "room" }
 androidDynamicFeature = { id = "com.android.dynamic-feature", version.ref = "agp" }
 mapsplatform-secrets-plugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secretsPlugin"}
 
+runique-android-application = { id = "runique.android.application", version = "unspecified" }
 #중복 생략
 #jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 #org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org-jetbrains-kotlin-jvm" }

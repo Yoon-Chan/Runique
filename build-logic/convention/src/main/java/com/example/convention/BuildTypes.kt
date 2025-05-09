@@ -3,6 +3,7 @@ package com.example.convention
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.BuildType
 import com.android.build.api.dsl.CommonExtension
+import com.android.build.api.dsl.LibraryExtension
 import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 import org.gradle.api.Project
 
@@ -32,7 +33,7 @@ internal fun Project.configureBuildTypes(
                 }
             }
             ExtensionType.LIBRARY -> {
-                extensions.configure<ApplicationExtension>("android") {
+                extensions.configure<LibraryExtension>("android") {
                     buildTypes {
                         debug {
                             configureDebugBuildType(apiKey)

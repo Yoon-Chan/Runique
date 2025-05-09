@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.mapsplatform.secrets.plugin)
     alias(libs.plugins.runique.android.application)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -8,16 +9,6 @@ android {
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
     }
 
     buildFeatures {

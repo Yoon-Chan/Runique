@@ -1,8 +1,10 @@
 package com.example.convention
 
 import com.android.build.api.dsl.CommonExtension
+import org.apache.tools.ant.taskdefs.Java
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
+import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
@@ -39,6 +41,14 @@ internal fun Project.configureKotlinAndroid(
 //        }
 //   }
 //}
+
+internal fun Project.configureKotlinJvm() {
+    extensions.configure<JavaPluginExtension>("java") {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    configureKotlin()
+}
 
 //현재 방식
 //kotlinOptions는 Deprecated되어서 compilerOptions를 통해 설정 가능

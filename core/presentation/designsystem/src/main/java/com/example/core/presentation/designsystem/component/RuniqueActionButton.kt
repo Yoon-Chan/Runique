@@ -37,8 +37,8 @@ fun RuniqueActionButton(
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.primary,
             contentColor = MaterialTheme.colorScheme.onPrimary,
-            disabledContentColor = RuniqueGray,
-            disabledContainerColor = RuniqueBlack
+            disabledContentColor = RuniqueBlack,
+            disabledContainerColor = RuniqueGray
         ),
         shape = RoundedCornerShape(100f),
         modifier = modifier

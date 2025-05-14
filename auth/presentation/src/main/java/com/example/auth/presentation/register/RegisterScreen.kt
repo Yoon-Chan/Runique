@@ -110,6 +110,7 @@ fun RegisterScreen(
                     }
                 }
             )
+
             Spacer(modifier = Modifier.height(48.dp))
             RuniqueTextField(
                 modifier = modifier.fillMaxWidth(),

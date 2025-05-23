@@ -32,6 +32,9 @@ dependencies {
     // Coil
     implementation(libs.coil.compose)
 
+    //koin
+    implementation(libs.bundles.koin)
+
     // Compose
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.androidx.lifecycle.viewmodel.compose)

@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.onEach
 
 class RegisterViewModel(
     private val userDataValidator: UserDataValidator
-): ViewModel() {
+) : ViewModel() {
     var state by mutableStateOf(RegisterState())
         private set
 
@@ -26,20 +26,27 @@ class RegisterViewModel(
         * */
         snapshotFlow { state.email.text.toString() }
             .onEach { email ->
+                val isValidEmail = userDataValidator.isValidEmail(email)
                 state = state.copy(
-                    isEmailValid = userDataValidator.isValidEmail(email)
+                    isEmailValid = isValidEmail,
+                    canRegister = isValidEmail && state.passwordValidationState.isValidPassword
+                            && !state.isRegistering
                 )
             }
             .launchIn(viewModelScope)
 
         snapshotFlow { state.password.text.toString() }
             .onEach { password ->
+                val passwordValidationState = userDataValidator.validatePassword(password)
                 state = state.copy(
-                    passwordValidationState = userDataValidator.validatePassword(password)
+                    passwordValidationState = passwordValidationState,
+                    canRegister = passwordValidationState.isValidPassword && state.isEmailValid
+                            && !state.isRegistering
                 )
             }
             .launchIn(viewModelScope)
     }
+
     fun onAction(action: RegisterAction) {
 
     }

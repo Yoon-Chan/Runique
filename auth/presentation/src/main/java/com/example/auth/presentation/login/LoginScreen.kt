@@ -126,7 +126,7 @@ private fun LoginScreen(
             RuniqueActionButton(
                 text = stringResource(R.string.login),
                 isLoading = state.isLoggingIn,
-                enabled = state.canLogin
+                enabled = state.canLogin && !state.isLoggingIn
             ) {
                 onAction(LoginAction.OnLoginClick)
             }

@@ -1,6 +1,5 @@
 package com.example.core.data.networking.di
 
-import android.content.SharedPreferences
 import com.example.core.data.auth.EncryptedSessionStorage
 import com.example.core.data.networking.HttpClientFactory
 import com.example.core.domain.SessionStorage

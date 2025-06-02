@@ -3,10 +3,16 @@ package com.example.runique.di
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
+import com.example.runique.MainViewModel
 import org.koin.android.ext.koin.androidApplication
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val appModule= module {
+    viewModel {
+        MainViewModel(get())
+    }
+
     single<SharedPreferences> {
         EncryptedSharedPreferences(
             androidApplication(),

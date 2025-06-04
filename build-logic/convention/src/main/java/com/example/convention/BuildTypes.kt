@@ -17,13 +17,14 @@ internal fun Project.configureBuildTypes(
         }
 
         val apiKey = gradleLocalProperties(rootDir, providers).getProperty("API_KEY")
+        val mapsApiKey = gradleLocalProperties(rootDir, providers).getProperty("MAPS_API_KEY")
 
         when(extensionType) {
             ExtensionType.APPLICATION -> {
                 extensions.configure<ApplicationExtension>("android") {
                     buildTypes {
                         debug {
-                            configureDebugBuildType(apiKey)
+                            configureDebugBuildType(apiKey, mapsApiKey)
                         }
 
                         release {
@@ -36,7 +37,7 @@ internal fun Project.configureBuildTypes(
                 extensions.configure<LibraryExtension>("android") {
                     buildTypes {
                         debug {
-                            configureDebugBuildType(apiKey)
+                            configureDebugBuildType(apiKey, mapsApiKey)
                         }
 
                         release {
@@ -49,9 +50,10 @@ internal fun Project.configureBuildTypes(
     }
 }
 
-private fun BuildType.configureDebugBuildType(apiKey: String) {
+private fun BuildType.configureDebugBuildType(apiKey: String, mapsApiKey: String) {
     buildConfigField("String","API_KEY", "\"$apiKey\"")
     buildConfigField("String", "BASE_URL", "\"https://runique.pl-coding.com:8080\"")
+    manifestPlaceholders["MAPS_API_KEY"] = mapsApiKey
 }
 
 private fun BuildType.configureReleaseBuildType(

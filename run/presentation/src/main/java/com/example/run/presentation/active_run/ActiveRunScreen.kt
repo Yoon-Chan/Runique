@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import com.example.core.presentation.designsystem.RuniqueTheme
 import com.example.core.presentation.designsystem.StartIcon
 import com.example.core.presentation.designsystem.StopIcon
+import com.example.core.presentation.designsystem.component.RuniqueActionButton
 import com.example.core.presentation.designsystem.component.RuniqueDialog
 import com.example.core.presentation.designsystem.component.RuniqueFloatingActionButton
 import com.example.core.presentation.designsystem.component.RuniqueOutlineActionButton
@@ -162,6 +163,32 @@ private fun ActiveRunScreen(
         }
     }
 
+    if (!state.shouldTrack && state.hasStartedRunning) {
+        RuniqueDialog(
+            title = stringResource(R.string.running_is_paused),
+            onDismiss = {
+                onAction(ActiveRunAction.OnResumeRunClick)
+            },
+            description = stringResource(R.string.resume_or_finish_run),
+            primaryButton = {
+                RuniqueActionButton(
+                    modifier = Modifier.weight(1f),
+                    text = stringResource(R.string.resume),
+                    isLoading = false,
+                    onClick = { onAction(ActiveRunAction.OnResumeRunClick) }
+                )
+            },
+            secondaryButton = {
+                RuniqueOutlineActionButton(
+                    modifier = Modifier.weight(1f),
+                    text = stringResource(R.string.finish),
+                    isLoading = state.isSavingRun,
+                    onClick = { onAction(ActiveRunAction.OnFinishRunClick) }
+                )
+            },
+        )
+    }
+
     if (state.showLocationRationale || state.showNotificationRationale) {
         RuniqueDialog(
             title = stringResource(R.string.permission_required),
@@ -176,12 +203,13 @@ private fun ActiveRunScreen(
             },
             primaryButton = {
                 RuniqueOutlineActionButton(
+                    modifier = Modifier.weight(1f),
                     text = stringResource(R.string.okay),
                     isLoading = false,
                     onClick = {
                         onAction(ActiveRunAction.OnDismissDialog)
                         permissionLauncher.requestRuniquePermissions(context)
-                    }
+                    },
                 )
             }
         )

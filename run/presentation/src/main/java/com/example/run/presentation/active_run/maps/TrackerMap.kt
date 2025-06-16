@@ -108,7 +108,7 @@ fun TrackerMap(
         modifier = if (isRunFinished) {
             modifier
                 .width(300.dp)
-                .aspectRatio(16.9f)
+                .aspectRatio(16/9f)
                 .alpha(0f)
                 .onSizeChanged {
                     if (it.width >= 300) {
@@ -149,8 +149,6 @@ fun TrackerMap(
                         map.awaitSnapshot()?.let(onSnapshot)
                     }
                 }
-
-                val bmp = map.awaitSnapshot()
             }
         }
 

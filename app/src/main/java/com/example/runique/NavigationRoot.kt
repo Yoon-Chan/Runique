@@ -1,6 +1,5 @@
 package com.example.runique
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavGraphBuilder
@@ -123,7 +122,12 @@ private fun NavGraphBuilder.runGraph(navController: NavHostController) {
                             ActiveRunService.createStopIntent(context)
                         )
                     }
-
+                },
+                onBack = {
+                    navController.navigateUp()
+                },
+                onFinish = {
+                    navController.navigateUp()
                 }
             )
         }

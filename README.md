@@ -49,6 +49,11 @@ project
 │   └── presentation
 ```
 
+### 프로젝트 의존성 주입
+
+<img width="977" alt="스크린샷 2025-06-19 오전 11 57 10" src="https://github.com/user-attachments/assets/59f2c4e4-0978-4fa8-b293-d80fe317dce6" />
+
+
 
 ## 📗 프로젝트를 통해 얻은 경험 - [프로젝트 기술 기록](https://www.notion.so/6c2e6c9f15014288ae9cac7e3c7888a3?p=1ee0977f1521800cabfed0084431240e&pm=c)
 #### 1. Ktor를 활용한 네트워크 통신 경험
